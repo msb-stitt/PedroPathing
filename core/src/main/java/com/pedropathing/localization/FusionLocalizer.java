@@ -10,6 +10,7 @@ import com.pedropathing.math.Twist;
 import com.pedropathing.math.Vector;
 import com.pedropathing.math.Velocity;
 import com.pedropathing.utils.Angle;
+import com.pedropathing.utils.Clock;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
@@ -78,7 +79,7 @@ public class FusionLocalizer implements Localizer {
     public void update() {
         // Updates odometry
         deadReckoning.update();
-        long now = System.nanoTime();
+        long now = Clock.nanoTime();
         double dt = lastUpdateTime < 0 ? 0 : (now - lastUpdateTime) / 1e9;
         lastUpdateTime = now;
 
@@ -299,7 +300,7 @@ public class FusionLocalizer implements Localizer {
         currentRawPose = setPose;
 
         history.clear();
-        history.put(System.nanoTime(), new KalmanState(setPose, motionState.velocity(), Pose.zero(), P));
+        history.put(Clock.nanoTime(), new KalmanState(setPose, motionState.velocity(), Pose.zero(), P));
     }
 
     /**

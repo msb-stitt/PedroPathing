@@ -4,6 +4,7 @@
  */
 package com.pedropathing.controllers;
 
+import com.pedropathing.utils.Clock;
 import java.util.function.Supplier;
 
 @FunctionalInterface
@@ -135,11 +136,11 @@ public interface Controller {
         @Override
         public double calculate(double target, double error) {
             if (previousTime == 0) {
-                previousTime = System.nanoTime();
+                previousTime = Clock.nanoTime();
                 return 0;
             }
-            dt = (System.nanoTime() - previousTime) * 1e-9;
-            previousTime = System.nanoTime();
+            dt = (Clock.nanoTime() - previousTime) * 1e-9;
+            previousTime = Clock.nanoTime();
             return 0;
         }
 

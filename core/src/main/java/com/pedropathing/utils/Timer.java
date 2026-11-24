@@ -7,7 +7,7 @@ package com.pedropathing.utils;
 import java.util.concurrent.TimeUnit;
 
 /**
- * This is the Timer class. It is timer with nanosecond precision using System.nanotime()
+ * This is the Timer class. It is timer with nanosecond precision using Clock.nanoTime()
  *
  * @author Baron Henderson - 20077 The Indubitables
  * @author Havish Sripada - 12808 RevAmped Robotics
@@ -23,12 +23,12 @@ public class Timer {
 
     /** This resets the Timer's start time to the current time */
     public void reset() {
-        startTime = System.nanoTime();
+        startTime = Clock.nanoTime();
     }
 
     /** This returns the elapsed time in nanoseconds */
     public long nanoseconds() {
-        return System.nanoTime() - startTime;
+        return Clock.nanoTime() - startTime;
     }
 
     /**

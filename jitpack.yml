@@ -1,0 +1,9 @@
+# JitPack builds a tag of this fork the first time someone asks for it, as
+# com.github.msb-stitt.PedroPathing:core:<tag>. Its default JDK is 8, and this
+# build needs 17; core publishes by the deployer plugin's deployLocal, at the
+# tag's version, which JitPack gives as VERSION.
+jdk:
+  - openjdk17
+
+install:
+  - ./gradlew :core:deployLocal -Pversion=$VERSION
